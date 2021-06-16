@@ -14,6 +14,14 @@ enum ProfileAttributes: String {
     lastName     = "lastName",
     bankAccount  = "bankAccount",
     profileImg   = "profileImg"
+    
+
+    static let getAll = [
+        firstName,
+        lastName,
+        bankAccount,
+        profileImg
+    ]
 }
 
 @objc(Profile)
