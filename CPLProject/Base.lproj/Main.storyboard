@@ -7,6 +7,74 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Add Receipt Group-->
+        <scene sceneID="Dpe-NO-paf">
+            <objects>
+                <viewController id="6Fl-dA-eIm" customClass="GroupItemViewController" customModule="CPLProject" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="fba-pa-yfI">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JoA-k3-jGS">
+                                <rect key="frame" x="34" y="133" width="56.5" height="34"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="34" id="jq6-bN-CN8"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="R7T-oM-PCG">
+                                <rect key="frame" x="108.5" y="133" width="236.5" height="34"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="34" id="fUg-wY-drR"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XEW-tP-1uQ">
+                                <rect key="frame" x="142.5" y="227" width="90" height="40"/>
+                                <color key="backgroundColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="90" id="AXh-b6-5PR">
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="layer.CornerRadius" value="5"/>
+                                        </userDefinedRuntimeAttributes>
+                                    </constraint>
+                                    <constraint firstAttribute="height" constant="40" id="QxF-Az-eIN"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="26"/>
+                                <color key="tintColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <state key="normal" title="Save"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="layer.CornerRadius" value="5"/>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="groupSaveButtonTapped:" destination="6Fl-dA-eIm" eventType="touchUpInside" id="OQx-k4-YpK"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="R7T-oM-PCG" firstAttribute="top" secondItem="JoA-k3-jGS" secondAttribute="top" id="8Cc-5s-n3C"/>
+                            <constraint firstItem="R7T-oM-PCG" firstAttribute="leading" secondItem="JoA-k3-jGS" secondAttribute="trailing" constant="18" id="I8V-PO-iLd"/>
+                            <constraint firstItem="JoA-k3-jGS" firstAttribute="leading" secondItem="znp-2I-fYQ" secondAttribute="leading" constant="34" id="Jyb-6G-Chg"/>
+                            <constraint firstItem="JoA-k3-jGS" firstAttribute="top" secondItem="znp-2I-fYQ" secondAttribute="top" constant="89" id="T7y-PD-7dH"/>
+                            <constraint firstItem="XEW-tP-1uQ" firstAttribute="top" secondItem="R7T-oM-PCG" secondAttribute="bottom" constant="60" id="Xr2-Wc-bFT"/>
+                            <constraint firstItem="znp-2I-fYQ" firstAttribute="trailing" secondItem="R7T-oM-PCG" secondAttribute="trailing" constant="30" id="e1Y-ED-8DJ"/>
+                            <constraint firstItem="XEW-tP-1uQ" firstAttribute="centerX" secondItem="znp-2I-fYQ" secondAttribute="centerX" id="kgJ-r8-nX7"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="znp-2I-fYQ"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Add Receipt Group" id="tWU-jv-iZI"/>
+                    <connections>
+                        <outlet property="GroupNameLabel" destination="R7T-oM-PCG" id="LtR-CQ-pUL"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wsM-0f-PFy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4490.3999999999996" y="-671.51424287856082"/>
+        </scene>
         <!--Group Table View Controller-->
         <scene sceneID="0hx-cc-scD">
             <objects>
@@ -27,16 +95,16 @@
                                 <rect key="frame" x="142.5" y="52" width="90" height="90"/>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="14h-13-8Qn">
-                                <rect key="frame" x="30" y="162" width="305" height="0.0"/>
+                                <rect key="frame" x="30" y="187" width="305" height="25"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" id="CGD-JL-thI"/>
+                                    <constraint firstAttribute="height" constant="25" id="CGD-JL-thI"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="5v8-SL-CCZ">
-                                <rect key="frame" x="0.0" y="170" width="375" height="384"/>
+                                <rect key="frame" x="0.0" y="220" width="375" height="334"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="groupItemCell" id="X4V-eV-Ebf" customClass="GroupTableViewCell" customModule="CPLProject" customModuleProvider="target">
@@ -85,14 +153,17 @@
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="string" keyPath="layer.CornerRadius" value="7"/>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <segue destination="6Fl-dA-eIm" kind="push" identifier="editGroupItemSegue" id="gdn-z4-agl"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oEo-1l-MPH">
-                                <rect key="frame" x="30" y="152" width="305" height="0.0"/>
+                                <rect key="frame" x="30" y="152" width="305" height="25"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" id="meV-5t-nD2"/>
+                                    <constraint firstAttribute="height" constant="25" id="meV-5t-nD2"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -130,9 +201,7 @@
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="allReceiptsTableView" destination="5v8-SL-CCZ" id="TU4-ob-fin"/>
-                        <outlet property="bankAccountHeightConstraints" destination="CGD-JL-thI" id="9cq-wU-cns"/>
                         <outlet property="bankAccountLbl" destination="14h-13-8Qn" id="aVY-Rb-JJx"/>
-                        <outlet property="firstLastHeightConstraints" destination="meV-5t-nD2" id="Rra-SO-o1y"/>
                         <outlet property="firstLastLbl" destination="oEo-1l-MPH" id="L25-jz-Jde"/>
                         <outlet property="profileImageView" destination="qf6-ir-Lnu" id="sH5-a2-Aw2"/>
                     </connections>
@@ -322,6 +391,84 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9XX-mJ-B0d" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2594" y="-1342"/>
+        </scene>
+        <!--Receipt Table View Controller-->
+        <scene sceneID="Wzi-5q-Aim">
+            <objects>
+                <viewController id="uzG-rF-J1g" customClass="ReceiptTableViewController" customModule="CPLProject" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="j3u-6z-M40">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="0pO-Gu-6w0">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="578"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="receiptItemCell" id="paA-a3-9yI" customClass="ReceiptTableViewCell" customModule="CPLProject" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="43.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="paA-a3-9yI" id="SEE-D4-TED">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TLP-Ha-ipP">
+                                                    <rect key="frame" x="30" y="7" width="52.5" height="30"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="30" id="CfB-SA-Vca"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="TLP-Ha-ipP" firstAttribute="leading" secondItem="SEE-D4-TED" secondAttribute="leading" constant="30" id="1ZX-Ex-5Ov"/>
+                                                <constraint firstItem="TLP-Ha-ipP" firstAttribute="centerY" secondItem="SEE-D4-TED" secondAttribute="centerY" id="Lyk-LJ-CUQ"/>
+                                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="TLP-Ha-ipP" secondAttribute="trailing" constant="20" symbolic="YES" id="kcn-TL-HY5"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="receiptName" destination="TLP-Ha-ipP" id="6Ic-io-ary"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="uzG-rF-J1g" id="bpy-Vd-VjO"/>
+                                    <outlet property="delegate" destination="uzG-rF-J1g" id="NpO-Vg-T5r"/>
+                                </connections>
+                            </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RYL-vx-ZdG">
+                                <rect key="frame" x="112.5" y="588" width="150" height="40"/>
+                                <color key="backgroundColor" systemColor="opaqueSeparatorColor" red="0.77647058820000003" green="0.77647058820000003" blue="0.7843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="150" id="Grp-Wc-Fj5"/>
+                                    <constraint firstAttribute="height" constant="40" id="Uvc-bG-QDl"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="Add a Receipt"/>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="Qqh-iu-jkX" firstAttribute="trailing" secondItem="0pO-Gu-6w0" secondAttribute="trailing" id="0VX-KF-Ibn"/>
+                            <constraint firstItem="0pO-Gu-6w0" firstAttribute="top" secondItem="Qqh-iu-jkX" secondAttribute="top" id="3KE-HE-ey8"/>
+                            <constraint firstItem="RYL-vx-ZdG" firstAttribute="bottom" secondItem="Qqh-iu-jkX" secondAttribute="bottom" constant="10" id="3kv-ZG-yjH"/>
+                            <constraint firstItem="0pO-Gu-6w0" firstAttribute="leading" secondItem="Qqh-iu-jkX" secondAttribute="leading" id="LtN-EO-N2L"/>
+                            <constraint firstItem="RYL-vx-ZdG" firstAttribute="top" secondItem="0pO-Gu-6w0" secondAttribute="bottom" constant="10" id="f50-O6-xVx"/>
+                            <constraint firstItem="RYL-vx-ZdG" firstAttribute="centerX" secondItem="Qqh-iu-jkX" secondAttribute="centerX" id="sOz-2l-Led"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Qqh-iu-jkX"/>
+                    </view>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="3ca-Io-pRV"/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="receiptsTableView" destination="0pO-Gu-6w0" id="62R-U1-5j1"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="J3O-a6-xLZ" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3559.1999999999998" y="144.3778110944528"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Db0-dV-NQA">
