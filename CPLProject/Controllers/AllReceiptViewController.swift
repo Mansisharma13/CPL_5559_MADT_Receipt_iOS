@@ -1,10 +1,3 @@
-//
-//  AllReceiptViewController.swift
-//  CPLProject
-//
-//  Created by Kaur, Simerjeet on 13/06/21.
-//  Copyright © 2021 com.cpl. All rights reserved.
-//
 
 import UIKit
 
