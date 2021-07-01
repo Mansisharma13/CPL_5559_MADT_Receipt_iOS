@@ -13,6 +13,13 @@ enum GroupAttributes: String {
     groupId    = "groupId",
     groupName      = "groupName",
     groupDescription      = "groupDescription"
+    
+
+    static let getAll = [
+        groupId,
+        groupName,
+        groupDescription
+    ]
 }
 
 @objc(Group)
