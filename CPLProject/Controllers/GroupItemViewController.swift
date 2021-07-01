@@ -50,7 +50,10 @@ class GroupItemViewController: UIViewController, UITextFieldDelegate {
 
     fileprivate func getFieldValues() -> Dictionary<String, NSObject> {
 
-        
-        return null
+        var fieldDetails = [String: NSObject]()
+        fieldDetails[groupName] = groupNameLabel.text as NSObject?
+        fieldDetails[groupId] = "1" as NSObject
+        fieldDetails[groupDescription] = "Description temp" as NSObject
+        return fieldDetails
     }
 }
