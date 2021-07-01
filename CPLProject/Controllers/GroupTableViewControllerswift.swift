@@ -10,7 +10,11 @@ class GroupTableViewController: UIViewController, UITableViewDataSource, UITable
     @IBOutlet var profileImageView: UIImageView!
     @IBOutlet var firstLastLbl: UILabel!
     @IBOutlet var bankAccountLbl: UILabel!
-        
+    
+    var groupList: Array<Group> = []
+    var selectedGroupItem: Group!
+    var groupAPI: GroupAPI!
+    
     var profileAPI: ProfileAPI!
     var selectedProfileItem: Profile!
     var profileList: Array<Profile> = []
@@ -20,8 +24,6 @@ class GroupTableViewController: UIViewController, UITableViewDataSource, UITable
     let editGroupItemSegueIdentifier = "editGroupItemSegue"
     let receiptItemSegueSegueIdentifier = "receiptItemSegue"
     
-    @IBOutlet var firstLastHeightConstraints : NSLayoutConstraint!
-    @IBOutlet var bankAccountHeightConstraints : NSLayoutConstraint!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,8 +33,11 @@ class GroupTableViewController: UIViewController, UITableViewDataSource, UITable
 
     override func viewWillAppear(_ animated: Bool) {
         //Register for notifications
+        let notificationCenter = NotificationCenter.default
+        notificationCenter.addObserver(self, selector: #selector(self.updateGroupTableData), name: .updateGroupTableData, object: nil)
         let notificationCenterProfile = NotificationCenter.default
         notificationCenterProfile.addObserver(self, selector: #selector(self.updateProfileTableData), name: .updateProfileTableData, object: nil)
+        
         
         self.profileAPI = ProfileAPI.sharedInstance
         self.profileList = self.profileAPI.getAllProfile()
@@ -43,20 +48,11 @@ class GroupTableViewController: UIViewController, UITableViewDataSource, UITable
                 profileImageView.image = UIImage(data: profileList[0].profileImg)
                 firstLastLbl.text = String(format: "%@ %@",profileList[0].firstName,profileList[0].lastName)
                 bankAccountLbl.text = profileList[0].bankAccount
-                
-                if profileList[0].firstName.count > 0 || profileList[0].lastName.count > 0 {
-                    firstLastHeightConstraints.constant = 25.0;
-                } else {
-                    firstLastHeightConstraints.constant = 0.0;
-                }
-                
-                if profileList[0].bankAccount.count > 0 {
-                    bankAccountHeightConstraints.constant = 25.0
-                } else {
-                    bankAccountHeightConstraints.constant = 0.0
-                }
             }
         }
+
+        self.groupAPI = GroupAPI.sharedInstance
+        self.groupList = self.groupAPI.getAllGroup()
         allReceiptsTableView.layer.borderWidth = 0.5;
     }
 
@@ -67,13 +63,15 @@ class GroupTableViewController: UIViewController, UITableViewDataSource, UITable
     // MARK: - Table view data source
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 0;
+        return groupList.count;
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let groupCell =
         tableView.dequeueReusableCell(withIdentifier: groupTableCellIdentifier, for: indexPath) as! GroupTableViewCell
-        groupCell.groupName.text = "Receipt Group"
+        let groupItem: Group!
+        groupItem = groupList[(indexPath as NSIndexPath).row]
+        groupCell.groupName.text = groupItem.groupName
         return groupCell
     }
 
@@ -81,12 +79,21 @@ class GroupTableViewController: UIViewController, UITableViewDataSource, UITable
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 
-        let destination = segue.destination as? EditProfileViewController
-        if segue.identifier == editProfileSegueIdentifier {
+        let destination = segue.destination as? GroupItemViewController
+        if segue.identifier == editGroupItemSegueIdentifier {
+            destination!.title = "Add Receipt Group"
+        } else if segue.identifier == editProfileSegueIdentifier {
+           let destination = segue.destination as? EditProfileViewController
             destination!.title = "Profile"
-        }
+        } 
     }
 
+    //  MARK: - Refresh
+    
+    @objc func updateGroupTableData() {
+        refreshTableData()
+    }
+    
     @objc func updateProfileTableData() {
         let profileItem: Profile!
         if profileList.count > 0 {
@@ -95,23 +102,20 @@ class GroupTableViewController: UIViewController, UITableViewDataSource, UITable
                 profileImageView.image = UIImage(data: profileList[0].profileImg)
                 firstLastLbl.text = String(format: "%@ %@",profileList[0].firstName,profileList[0].lastName)
                 bankAccountLbl.text = profileList[0].bankAccount
-                
-                if profileList[0].firstName.count > 0 || profileList[0].lastName.count > 0 {
-                    firstLastHeightConstraints.constant = 25.0;
-                } else {
-                    firstLastHeightConstraints.constant = 0.0;
-                }
-                
-                if profileList[0].bankAccount.count > 0 {
-                    bankAccountHeightConstraints.constant = 25.0
-                } else {
-                    bankAccountHeightConstraints.constant = 0.0
-                }
             }
         }
+    }
+    
+    /** Refresh table data */
+    func refreshTableData() {
+        self.groupList.removeAll(keepingCapacity: false)
+        self.groupList = self.groupAPI.getAllGroup()
+        self.allReceiptsTableView.reloadData()
+        //self.title = String(format: "Upcoming events (%i)", self.groupList.count)
     }
 }
 
 extension Notification.Name {
+    static let updateGroupTableData = Notification.Name(rawValue: "updateGroupTableData")
     static let updateProfileTableData = Notification.Name(rawValue: "updateProfileTableData")
 }

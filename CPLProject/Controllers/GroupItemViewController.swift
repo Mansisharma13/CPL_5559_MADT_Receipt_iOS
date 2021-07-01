@@ -8,9 +8,7 @@ class GroupItemViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var groupNameLabel: UITextField! { didSet { groupNameLabel.delegate = self } }
 
-    fileprivate let groupId  = GroupAttributes.groupId.rawValue
-    fileprivate let groupName  = GroupAttributes.groupName.rawValue
-    fileprivate let groupDescription  = GroupAttributes.groupDescription.rawValue
+ 
 
 
     override func viewDidLoad() {
@@ -52,10 +50,7 @@ class GroupItemViewController: UIViewController, UITextFieldDelegate {
 
     fileprivate func getFieldValues() -> Dictionary<String, NSObject> {
 
-        var fieldDetails = [String: NSObject]()
-        fieldDetails[groupName] = groupNameLabel.text as NSObject?
-        fieldDetails[groupId] = "1" as NSObject
-        fieldDetails[groupDescription] = "Description temp" as NSObject
-        return fieldDetails
+        
+        return null
     }
 }
