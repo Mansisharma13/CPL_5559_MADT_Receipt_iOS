@@ -18,11 +18,13 @@
 		BC1ECE7026739734002E8623 /* DatastoreCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC1ECE6826739734002E8623 /* DatastoreCoordinator.swift */; };
 		BC1ECE7526739734002E8623 /* PersistenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC1ECE6D26739734002E8623 /* PersistenceManager.swift */; };
 		BC1ECE7626739734002E8623 /* ContextManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC1ECE6E26739734002E8623 /* ContextManager.swift */; };
+		BC1ECE7926739FE6002E8623 /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC1ECE7826739FE6002E8623 /* Group.swift */; };
+		BC1ECE7B2673A08F002E8623 /* GroupAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC1ECE7A2673A08F002E8623 /* GroupAPI.swift */; };
 		BC1ECE7D2673AD90002E8623 /* GroupTableViewControllerswift.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC1ECE7C2673AD90002E8623 /* GroupTableViewControllerswift.swift */; };
+		BC1ECE7F2673B592002E8623 /* GroupItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC1ECE7E2673B592002E8623 /* GroupItemViewController.swift */; };
 		BC1ECE81267459F1002E8623 /* GroupTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC1ECE80267459F1002E8623 /* GroupTableViewCell.swift */; };
 		BC1ECE832674B0CC002E8623 /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC1ECE822674B0CC002E8623 /* EditProfileViewController.swift */; };
 		BC1ECE852675B5E9002E8623 /* AllReceiptViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC1ECE842675B5E9002E8623 /* AllReceiptViewController.swift */; };
-		BC1ECE9426767A5F002E8623 /* flower.png in Resources */ = {isa = PBXBuildFile; fileRef = BC1ECE9326767A5E002E8623 /* flower.png */; };
 		BC1ECE9626770740002E8623 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC1ECE9526770740002E8623 /* Profile.swift */; };
 		BC1ECE9826770808002E8623 /* ProfileAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC1ECE9726770808002E8623 /* ProfileAPI.swift */; };
 /* End PBXBuildFile section */
@@ -62,11 +64,13 @@
 		BC1ECE6826739734002E8623 /* DatastoreCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatastoreCoordinator.swift; sourceTree = "<group>"; };
 		BC1ECE6D26739734002E8623 /* PersistenceManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersistenceManager.swift; sourceTree = "<group>"; };
 		BC1ECE6E26739734002E8623 /* ContextManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContextManager.swift; sourceTree = "<group>"; };
+		BC1ECE7826739FE6002E8623 /* Group.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
+		BC1ECE7A2673A08F002E8623 /* GroupAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupAPI.swift; sourceTree = "<group>"; };
 		BC1ECE7C2673AD90002E8623 /* GroupTableViewControllerswift.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupTableViewControllerswift.swift; sourceTree = "<group>"; };
+		BC1ECE7E2673B592002E8623 /* GroupItemViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupItemViewController.swift; sourceTree = "<group>"; };
 		BC1ECE80267459F1002E8623 /* GroupTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupTableViewCell.swift; sourceTree = "<group>"; };
 		BC1ECE822674B0CC002E8623 /* EditProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
 		BC1ECE842675B5E9002E8623 /* AllReceiptViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllReceiptViewController.swift; sourceTree = "<group>"; };
-		BC1ECE9326767A5E002E8623 /* flower.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = flower.png; sourceTree = "<group>"; };
 		BC1ECE9526770740002E8623 /* Profile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
 		BC1ECE9726770808002E8623 /* ProfileAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileAPI.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -168,8 +172,8 @@
 			children = (
 				BC1ECE842675B5E9002E8623 /* AllReceiptViewController.swift */,
 				BC1ECE7C2673AD90002E8623 /* GroupTableViewControllerswift.swift */,
+				BC1ECE7E2673B592002E8623 /* GroupItemViewController.swift */,
 				BC1ECE822674B0CC002E8623 /* EditProfileViewController.swift */,
-				BC1ECE9326767A5E002E8623 /* flower.png */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -177,6 +181,7 @@
 		BC1ECE892675D735002E8623 /* DataFetch */ = {
 			isa = PBXGroup;
 			children = (
+				BC1ECE7A2673A08F002E8623 /* GroupAPI.swift */,
 				BC1ECE9726770808002E8623 /* ProfileAPI.swift */,
 			);
 			path = DataFetch;
@@ -193,6 +198,7 @@
 		BC1ECE8C2675D76C002E8623 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				BC1ECE7826739FE6002E8623 /* Group.swift */,
 				BC1ECE9526770740002E8623 /* Profile.swift */,
 			);
 			path = Model;
@@ -302,7 +308,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BC1ECE9426767A5F002E8623 /* flower.png in Resources */,
 				BC1ECE45267396C3002E8623 /* LaunchScreen.storyboard in Resources */,
 				BC1ECE42267396C3002E8623 /* Assets.xcassets in Resources */,
 				BC1ECE3D267396C2002E8623 /* Main.storyboard in Resources */,
@@ -330,12 +335,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BC1ECE7B2673A08F002E8623 /* GroupAPI.swift in Sources */,
 				BC1ECE81267459F1002E8623 /* GroupTableViewCell.swift in Sources */,
 				BC1ECE7526739734002E8623 /* PersistenceManager.swift in Sources */,
+				BC1ECE7926739FE6002E8623 /* Group.swift in Sources */,
 				BC1ECE7026739734002E8623 /* DatastoreCoordinator.swift in Sources */,
 				BC1ECE9626770740002E8623 /* Profile.swift in Sources */,
 				BC1ECE40267396C2002E8623 /* CPLProject.xcdatamodeld in Sources */,
 				BC1ECE832674B0CC002E8623 /* EditProfileViewController.swift in Sources */,
+				BC1ECE7F2673B592002E8623 /* GroupItemViewController.swift in Sources */,
 				BC1ECE36267396C2002E8623 /* AppDelegate.swift in Sources */,
 				BC1ECE9826770808002E8623 /* ProfileAPI.swift in Sources */,
 				BC1ECE7626739734002E8623 /* ContextManager.swift in Sources */,
