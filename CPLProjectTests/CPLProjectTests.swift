@@ -1,10 +1,4 @@
-//
-//  CPLProjectTests.swift
-//  CPLProjectTests
-//
-//  Created by Kaur, Simerjeet on 11/06/21.
-//  Copyright © 2021 com.cpl. All rights reserved.
-//
+
 
 import XCTest
 @testable import CPLProject
