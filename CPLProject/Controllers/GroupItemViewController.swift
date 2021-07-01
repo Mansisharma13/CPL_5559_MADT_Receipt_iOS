@@ -8,7 +8,9 @@ class GroupItemViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var groupNameLabel: UITextField! { didSet { groupNameLabel.delegate = self } }
 
- 
+    fileprivate let groupId  = GroupAttributes.groupId.rawValue
+    fileprivate let groupName  = GroupAttributes.groupName.rawValue
+    fileprivate let groupDescription  = GroupAttributes.groupDescription.rawValue
 
 
     override func viewDidLoad() {
