@@ -1,6 +1,4 @@
 
-
-
 import XCTest
 
 class CPLProjectUITests: XCTestCase {
