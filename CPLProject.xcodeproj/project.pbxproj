@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BC04A315269EA6DC00CADEC9 /* ReceiptItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC04A314269EA6DC00CADEC9 /* ReceiptItemViewController.swift */; };
+		BC04A317269EA74C00CADEC9 /* Receipt.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC04A316269EA74C00CADEC9 /* Receipt.swift */; };
+		BC04A319269EA90100CADEC9 /* ReceiptAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC04A318269EA90100CADEC9 /* ReceiptAPI.swift */; };
 		BC1ECE36267396C2002E8623 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC1ECE35267396C2002E8623 /* AppDelegate.swift */; };
 		BC1ECE38267396C2002E8623 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC1ECE37267396C2002E8623 /* SceneDelegate.swift */; };
 		BC1ECE3D267396C2002E8623 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BC1ECE3B267396C2002E8623 /* Main.storyboard */; };
@@ -25,6 +28,9 @@
 		BC1ECE81267459F1002E8623 /* GroupTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC1ECE80267459F1002E8623 /* GroupTableViewCell.swift */; };
 		BC1ECE832674B0CC002E8623 /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC1ECE822674B0CC002E8623 /* EditProfileViewController.swift */; };
 		BC1ECE852675B5E9002E8623 /* AllReceiptViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC1ECE842675B5E9002E8623 /* AllReceiptViewController.swift */; };
+		BC1ECE8E26764159002E8623 /* ReceiptTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC1ECE8D26764159002E8623 /* ReceiptTableViewController.swift */; };
+		BC1ECE90267645B2002E8623 /* ReceiptTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC1ECE8F267645B2002E8623 /* ReceiptTableViewCell.swift */; };
+		BC1ECE9426767A5F002E8623 /* flower.png in Resources */ = {isa = PBXBuildFile; fileRef = BC1ECE9326767A5E002E8623 /* flower.png */; };
 		BC1ECE9626770740002E8623 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC1ECE9526770740002E8623 /* Profile.swift */; };
 		BC1ECE9826770808002E8623 /* ProfileAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC1ECE9726770808002E8623 /* ProfileAPI.swift */; };
 /* End PBXBuildFile section */
@@ -47,6 +53,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		BC04A314269EA6DC00CADEC9 /* ReceiptItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiptItemViewController.swift; sourceTree = "<group>"; };
+		BC04A316269EA74C00CADEC9 /* Receipt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Receipt.swift; sourceTree = "<group>"; };
+		BC04A318269EA90100CADEC9 /* ReceiptAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReceiptAPI.swift; sourceTree = "<group>"; };
 		BC1ECE32267396C2002E8623 /* CPLProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CPLProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BC1ECE35267396C2002E8623 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BC1ECE37267396C2002E8623 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -71,6 +80,9 @@
 		BC1ECE80267459F1002E8623 /* GroupTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupTableViewCell.swift; sourceTree = "<group>"; };
 		BC1ECE822674B0CC002E8623 /* EditProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
 		BC1ECE842675B5E9002E8623 /* AllReceiptViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllReceiptViewController.swift; sourceTree = "<group>"; };
+		BC1ECE8D26764159002E8623 /* ReceiptTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiptTableViewController.swift; sourceTree = "<group>"; };
+		BC1ECE8F267645B2002E8623 /* ReceiptTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReceiptTableViewCell.swift; sourceTree = "<group>"; };
+		BC1ECE9326767A5E002E8623 /* flower.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = flower.png; sourceTree = "<group>"; };
 		BC1ECE9526770740002E8623 /* Profile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
 		BC1ECE9726770808002E8623 /* ProfileAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileAPI.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -171,9 +183,12 @@
 			isa = PBXGroup;
 			children = (
 				BC1ECE842675B5E9002E8623 /* AllReceiptViewController.swift */,
+				BC1ECE822674B0CC002E8623 /* EditProfileViewController.swift */,
 				BC1ECE7C2673AD90002E8623 /* GroupTableViewControllerswift.swift */,
 				BC1ECE7E2673B592002E8623 /* GroupItemViewController.swift */,
-				BC1ECE822674B0CC002E8623 /* EditProfileViewController.swift */,
+				BC1ECE8D26764159002E8623 /* ReceiptTableViewController.swift */,
+				BC04A314269EA6DC00CADEC9 /* ReceiptItemViewController.swift */,
+				BC1ECE9326767A5E002E8623 /* flower.png */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -181,8 +196,9 @@
 		BC1ECE892675D735002E8623 /* DataFetch */ = {
 			isa = PBXGroup;
 			children = (
-				BC1ECE7A2673A08F002E8623 /* GroupAPI.swift */,
 				BC1ECE9726770808002E8623 /* ProfileAPI.swift */,
+				BC1ECE7A2673A08F002E8623 /* GroupAPI.swift */,
+				BC04A318269EA90100CADEC9 /* ReceiptAPI.swift */,
 			);
 			path = DataFetch;
 			sourceTree = "<group>";
@@ -191,6 +207,7 @@
 			isa = PBXGroup;
 			children = (
 				BC1ECE80267459F1002E8623 /* GroupTableViewCell.swift */,
+				BC1ECE8F267645B2002E8623 /* ReceiptTableViewCell.swift */,
 			);
 			path = CustomTableCell;
 			sourceTree = "<group>";
@@ -198,8 +215,9 @@
 		BC1ECE8C2675D76C002E8623 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				BC1ECE7826739FE6002E8623 /* Group.swift */,
 				BC1ECE9526770740002E8623 /* Profile.swift */,
+				BC1ECE7826739FE6002E8623 /* Group.swift */,
+				BC04A316269EA74C00CADEC9 /* Receipt.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -308,6 +326,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BC1ECE9426767A5F002E8623 /* flower.png in Resources */,
 				BC1ECE45267396C3002E8623 /* LaunchScreen.storyboard in Resources */,
 				BC1ECE42267396C3002E8623 /* Assets.xcassets in Resources */,
 				BC1ECE3D267396C2002E8623 /* Main.storyboard in Resources */,
@@ -336,11 +355,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				BC1ECE7B2673A08F002E8623 /* GroupAPI.swift in Sources */,
+				BC04A315269EA6DC00CADEC9 /* ReceiptItemViewController.swift in Sources */,
 				BC1ECE81267459F1002E8623 /* GroupTableViewCell.swift in Sources */,
+				BC1ECE90267645B2002E8623 /* ReceiptTableViewCell.swift in Sources */,
 				BC1ECE7526739734002E8623 /* PersistenceManager.swift in Sources */,
 				BC1ECE7926739FE6002E8623 /* Group.swift in Sources */,
 				BC1ECE7026739734002E8623 /* DatastoreCoordinator.swift in Sources */,
 				BC1ECE9626770740002E8623 /* Profile.swift in Sources */,
+				BC04A317269EA74C00CADEC9 /* Receipt.swift in Sources */,
 				BC1ECE40267396C2002E8623 /* CPLProject.xcdatamodeld in Sources */,
 				BC1ECE832674B0CC002E8623 /* EditProfileViewController.swift in Sources */,
 				BC1ECE7F2673B592002E8623 /* GroupItemViewController.swift in Sources */,
@@ -349,6 +371,8 @@
 				BC1ECE7626739734002E8623 /* ContextManager.swift in Sources */,
 				BC1ECE852675B5E9002E8623 /* AllReceiptViewController.swift in Sources */,
 				BC1ECE38267396C2002E8623 /* SceneDelegate.swift in Sources */,
+				BC1ECE8E26764159002E8623 /* ReceiptTableViewController.swift in Sources */,
+				BC04A319269EA90100CADEC9 /* ReceiptAPI.swift in Sources */,
 				BC1ECE7D2673AD90002E8623 /* GroupTableViewControllerswift.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
