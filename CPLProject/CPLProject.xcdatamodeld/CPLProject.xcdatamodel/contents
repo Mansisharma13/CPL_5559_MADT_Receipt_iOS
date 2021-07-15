@@ -11,8 +11,19 @@
         <attribute name="lastName" optional="YES" attributeType="String"/>
         <attribute name="profileImg" optional="YES" attributeType="Binary"/>
     </entity>
+    <entity name="Receipt" representedClassName="Receipt" syncable="YES">
+        <attribute name="groupId" optional="YES" attributeType="String"/>
+        <attribute name="groupName" optional="YES" attributeType="String"/>
+        <attribute name="receiptDate" optional="YES" attributeType="String"/>
+        <attribute name="receiptDescription" optional="YES" attributeType="String"/>
+        <attribute name="receiptId" optional="YES" attributeType="String"/>
+        <attribute name="receiptName" optional="YES" attributeType="String"/>
+        <attribute name="receiptSnapshot" optional="YES" attributeType="Binary"/>
+        <attribute name="receiptValue" optional="YES" attributeType="String"/>
+    </entity>
     <elements>
         <element name="Group" positionX="-54" positionY="63" width="128" height="88"/>
         <element name="Profile" positionX="-27" positionY="81" width="128" height="103"/>
+        <element name="Receipt" positionX="-36" positionY="72" width="128" height="163"/>
     </elements>
 </model>
