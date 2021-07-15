@@ -1,16 +1,7 @@
-//
-//  EventAPI.swift
-//  CoreDataCRUD
-//
-//  Copyright © 2016 Jongens van Techniek. All rights reserved.
-//
 
 import UIKit
 import CoreData
 
-/**
-    Event API contains the endpoints to Create/Read/Update/Delete Events.
-*/
 
 enum GroupTypes: String {
     case Group = "Group"
@@ -46,7 +37,7 @@ class GroupAPI {
         NSManagedObjectContext.init(concurrencyType: NSManagedObjectContextConcurrencyType.privateQueueConcurrencyType)
         minionManagedObjectContextWorker.parent = self.mainContextInstance
 
-        //Create new Object of Event entity
+       
         let eventItem = NSEntityDescription.insertNewObject(forEntityName: GroupTypes.Group.rawValue,
             into: minionManagedObjectContextWorker) as! Group
 
@@ -58,13 +49,12 @@ class GroupAPI {
                 }
             }
         }
-        //Save current work on Minion workers
+   
         self.persistenceManager.saveWorkerContext(minionManagedObjectContextWorker)
 
-        //Save and merge changes from Minion workers with Main context
+  
         self.persistenceManager.mergeWithMainContext()
 
-        //Post notification to update datasource of a given Viewcontroller/UITableView
         self.postUpdateNotification()
     }
 
@@ -73,7 +63,7 @@ class GroupAPI {
     func getGroupById(_ eventId: NSString) -> Array<Group> {
         var fetchedResults: Array<Group> = Array<Group>()
 
-        // Create request on Event entity
+      
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: GroupTypes.Group.rawValue)
 
 
