@@ -85,10 +85,30 @@ class GroupTableViewController: UIViewController, UITableViewDataSource, UITable
         } else if segue.identifier == editProfileSegueIdentifier {
            let destination = segue.destination as? EditProfileViewController
             destination!.title = "Profile"
-        } 
+        } else if segue.identifier == receiptItemSegueSegueIdentifier {
+            let destination = segue.destination as? ReceiptTableViewController
+            let selectedGroupItem: Group!
+            selectedGroupItem = groupList[(allReceiptsTableView.indexPathForSelectedRow! as NSIndexPath).row] as Group
+            destination!.selectedGroupItem = selectedGroupItem
+            
+        }
     }
 
-    //  MARK: - Refresh
+    // MARK: - Table edit mode
+
+//    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+//        return true
+//    }
+//
+//     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+//        if editingStyle == .delete {
+//            //Delete item from datastore
+//            groupAPI.deleteGroup(groupList[(indexPath as NSIndexPath).row])
+//            self.title = String(format: "Upcoming events (%i)", groupList.count)
+//        }
+//    }
+
+    // MARK: -
     
     @objc func updateGroupTableData() {
         refreshTableData()
