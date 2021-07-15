@@ -2,10 +2,6 @@
 import UIKit
 import CoreData
 
-/**
-    Event API contains the endpoints to Create/Read/Update/Delete Events.
-*/
-
 enum ProfileTypes: String {
     case Profile = "Profile"
     static let getAll = [Profile]
@@ -22,7 +18,7 @@ class ProfileAPI {
     fileprivate let profileImg = ProfileAttributes.profileImg.rawValue
 
 
-    //Utilize Singleton pattern by instanciating EventAPI only once.
+  
     class var sharedInstance: ProfileAPI {
         struct Singleton {
             static let instance = ProfileAPI()
@@ -41,7 +37,7 @@ class ProfileAPI {
         NSManagedObjectContext.init(concurrencyType: NSManagedObjectContextConcurrencyType.privateQueueConcurrencyType)
         minionManagedObjectContextWorker.parent = self.mainContextInstance
 
-        //Create new Object of Event entity
+        //Create new Object of  entity
         let ProfileItem = NSEntityDescription.insertNewObject(forEntityName: ProfileTypes.Profile.rawValue,
             into: minionManagedObjectContextWorker) as! Profile
 
@@ -73,7 +69,7 @@ class ProfileAPI {
                 }
             }
         }
-        //Persist new Event to datastore (via Managed Object Context Layer).
+        //Persist new Profile to datastore (via Managed Object Context Layer).
         self.persistenceManager.saveWorkerContext(minionManagedObjectContextWorker)
         self.persistenceManager.mergeWithMainContext()
         self.postUpdateNotification()
@@ -81,7 +77,7 @@ class ProfileAPI {
     
     func getAllProfile(_ sortedByDate: Bool = true, sortAscending: Bool = true) -> Array<Profile> {
         var fetchedResults: Array<Profile> = Array<Profile>()
-        // Create request on Event entity
+        // Create request on  entity
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: ProfileTypes.Profile.rawValue)
         //Execute Fetch request
         do {
