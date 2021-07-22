@@ -12,6 +12,7 @@ class AllReceiptViewController: UIViewController, UITableViewDataSource, UITable
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.title = "All Receipts"
 
     }
     

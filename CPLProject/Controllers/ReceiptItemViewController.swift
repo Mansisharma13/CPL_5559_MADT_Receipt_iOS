@@ -1,17 +1,17 @@
 
 import UIKit
 
-class ReceiptItemViewController: UIViewController, UITextFieldDelegate, UIImagePickerControllerDelegate,
+class ReceiptItemViewController: UIViewController, UITextFieldDelegate,UITextViewDelegate, UIImagePickerControllerDelegate,
 UINavigationControllerDelegate {
     
     fileprivate var receiptAPI: ReceiptAPI!
     var selectedReceiptItem: Receipt!
     var selectedGroupItem: Group!
     
-    @IBOutlet weak var receiptNameLabel: UITextField! { didSet { receiptNameLabel.delegate = self } }
-    @IBOutlet weak var receiptDescriptionLabel: UITextField! { didSet { receiptDescriptionLabel.delegate = self } }
-    @IBOutlet weak var receiptDateLabel: UITextField! { didSet { receiptDateLabel.delegate = self } }
-    @IBOutlet weak var receiptValueLabel: UITextField! { didSet { receiptValueLabel.delegate = self } }
+    @IBOutlet weak var receiptNameTxt: UITextField! { didSet { receiptNameTxt.delegate = self } }
+    @IBOutlet weak var receiptDescriptionTxt: UITextView! { didSet { receiptDescriptionTxt.delegate = self } }
+    @IBOutlet weak var receiptDateTxt: UITextField! { didSet { receiptDateTxt.delegate = self } }
+    @IBOutlet weak var receiptValueTxt: UITextField! { didSet { receiptValueTxt.delegate = self } }
     @IBOutlet weak var receiptSnapshotImg: UIImageView!
     @IBOutlet weak var receiptSnapshotBtn: UIButton!
     
@@ -33,6 +33,9 @@ UINavigationControllerDelegate {
 
     override func viewWillAppear(_ animated: Bool) {
         self.setup()
+        receiptDescriptionTxt.layer.borderWidth = 1;
+        receiptDescriptionTxt.layer.borderColor = UIColor(red: 204/255.0, green: 204/255.0, blue: 204/255.0, alpha: 1.0).cgColor
+        receiptDescriptionTxt.layer.cornerRadius = 5;
     }
 
     override func didReceiveMemoryWarning() {
@@ -45,7 +48,7 @@ UINavigationControllerDelegate {
     
     // MARK Actions :
     @IBAction func receiptSaveButtonTapped(_ sender: UIBarButtonItem) {
-        if receiptNameLabel.text! != "" {
+        if receiptNameTxt.text! != "" {
             let newDetails = getFieldValues()
             receiptAPI.saveReceipt(newDetails)
             self.navigationController?.popViewController(animated: true)
@@ -75,7 +78,13 @@ UINavigationControllerDelegate {
         receiptSnapshotImg.image = image;
     }
     
-    // MARK: Textfield delegates
+    // MARK: Textfield & Textview delegates
+    
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        let newText = (textView.text as NSString).replacingCharacters(in: range, with: text)
+        let numberOfChars = newText.count
+        return numberOfChars <= 50    // 50 Limit Value
+    }
 
     func textFieldDidEndEditing(_ textField: UITextField) {
     }
@@ -94,10 +103,10 @@ UINavigationControllerDelegate {
         fieldDetails[groupId] = "1" as NSObject
         fieldDetails[groupName] = selectedGroupItem.groupName as NSObject
         fieldDetails[receiptId] = "1" as NSObject
-        fieldDetails[receiptName] = receiptNameLabel.text as NSObject?
-        fieldDetails[receiptDescription] = receiptDescriptionLabel.text as NSObject?
-        fieldDetails[receiptDate] = receiptDateLabel.text as NSObject?
-        fieldDetails[receiptValue] = receiptValueLabel.text as NSObject?
+        fieldDetails[receiptName] = receiptNameTxt.text as NSObject?
+        fieldDetails[receiptDescription] = receiptDescriptionTxt.text as NSObject?
+        fieldDetails[receiptDate] = receiptDateTxt.text as NSObject?
+        fieldDetails[receiptValue] = receiptValueTxt.text as NSObject?
         if let imageData = receiptSnapshotImg.image?.pngData() {
                fieldDetails[receiptSnapshot] = imageData as NSObject?
         }
