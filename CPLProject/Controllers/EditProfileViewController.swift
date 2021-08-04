@@ -32,7 +32,7 @@ UINavigationControllerDelegate, UIActionSheetDelegate, UITextFieldDelegate {
     fileprivate func setup() {
         
         self.profileAPI = ProfileAPI.sharedInstance
-        self.profileList = self.profileAPI.getAllProfile()
+        self.profileList = self.profileAPI.getAllProfile() // GET DATA from DB
         self.setFieldValues()
     }
     

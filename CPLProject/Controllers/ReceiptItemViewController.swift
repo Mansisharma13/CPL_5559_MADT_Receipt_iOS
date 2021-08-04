@@ -15,7 +15,7 @@ UINavigationControllerDelegate {
     @IBOutlet weak var receiptSnapshotImg: UIImageView!
     @IBOutlet weak var receiptSnapshotBtn: UIButton!
     
-    
+    //DB :
     fileprivate let groupId  = ReceiptAttributes.groupId.rawValue
     fileprivate let groupName  = ReceiptAttributes.groupName.rawValue
     fileprivate let receiptId  = ReceiptAttributes.receiptId.rawValue
@@ -60,7 +60,7 @@ UINavigationControllerDelegate {
             let imagePicker = UIImagePickerController()
             imagePicker.delegate = self
             imagePicker.sourceType = .camera;
-            imagePicker.allowsEditing = false
+            imagePicker.allowsEditing = true
             self.present(imagePicker, animated: true, completion: nil)
         }
     }

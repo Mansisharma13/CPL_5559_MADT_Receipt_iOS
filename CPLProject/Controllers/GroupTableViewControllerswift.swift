@@ -114,6 +114,15 @@ class GroupTableViewController: UIViewController, UITableViewDataSource, UITable
         refreshTableData()
     }
     
+    /** Refresh table data */
+    func refreshTableData() {
+        self.groupList.removeAll(keepingCapacity: false)
+        self.groupList = self.groupAPI.getAllGroup()
+        self.allReceiptsTableView.reloadData()
+        //self.title = String(format: "Upcoming events (%i)", self.groupList.count)
+    }
+    
+    // To update Profile
     @objc func updateProfileTableData() {
         let profileItem: Profile!
         if profileList.count > 0 {
@@ -126,13 +135,7 @@ class GroupTableViewController: UIViewController, UITableViewDataSource, UITable
         }
     }
     
-    /** Refresh table data */
-    func refreshTableData() {
-        self.groupList.removeAll(keepingCapacity: false)
-        self.groupList = self.groupAPI.getAllGroup()
-        self.allReceiptsTableView.reloadData()
-        //self.title = String(format: "Upcoming events (%i)", self.groupList.count)
-    }
+    
 }
 
 extension Notification.Name {

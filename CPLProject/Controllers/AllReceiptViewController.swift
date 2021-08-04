@@ -5,6 +5,11 @@ class AllReceiptViewController: UIViewController, UITableViewDataSource, UITable
     
     @IBOutlet var allReceiptsTableView: UITableView!
     let showProfileGroupSegueIdentifier = "showProfileGroupItemSegue"
+    let defaultGroupName = "Grocery"
+    
+    var selectedGroupItem: Group!
+    var groupAPI: GroupAPI!
+    var groupList: Array<Group> = []
     
     var selectedReceiptItem: Receipt!
     var receiptAPI: ReceiptAPI!
@@ -13,6 +18,12 @@ class AllReceiptViewController: UIViewController, UITableViewDataSource, UITable
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "All Receipts"
+        
+        self.groupAPI = GroupAPI.sharedInstance
+        self.groupList = self.groupAPI.getGroupName(defaultGroupName as NSString)
+        if self.groupList.count == 0 {
+            self.groupAPI.saveGroup(defaultGroupName)
+        }
 
     }
     
@@ -20,7 +31,7 @@ class AllReceiptViewController: UIViewController, UITableViewDataSource, UITable
         //Register for notifications
         let notificationCenter = NotificationCenter.default
         notificationCenter.addObserver(self, selector: #selector(self.updateReceiptTableData), name: .updateReceiptTableData, object: nil)
-
+        
         self.receiptAPI = ReceiptAPI.sharedInstance
         receiptList.removeAll()
         self.receiptList = self.receiptAPI.getAllReceipt()
@@ -55,7 +66,7 @@ class AllReceiptViewController: UIViewController, UITableViewDataSource, UITable
         cell?.textLabel?.text = receiptItem.receiptName
               return cell!
     }
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) { // Navigate
 
         let destination = segue.destination as? GroupTableViewController
         if segue.identifier == showProfileGroupSegueIdentifier {

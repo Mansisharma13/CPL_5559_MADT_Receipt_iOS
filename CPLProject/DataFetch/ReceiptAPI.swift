@@ -67,13 +67,9 @@ class ReceiptAPI {
 
     
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: ReceiptTypes.Receipt.rawValue)
-
         let findByGroupNamePredicate =
         NSPredicate(format: "groupName = %@", groupName)
         fetchRequest.predicate = findByGroupNamePredicate
-        
-   
-
         //Execute Fetch request
         do {
             fetchedResults = try self.mainContextInstance.fetch(fetchRequest) as! [Receipt]
@@ -88,11 +84,7 @@ class ReceiptAPI {
     func getAllReceipt(_ sortedByDate: Bool = true, sortAscending: Bool = true) -> Array<Receipt> {
         var fetchedResults: Array<Receipt> = Array<Receipt>()
 
-        // Create request on Event entity
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: ReceiptTypes.Receipt.rawValue)
-        
-      
-        //Execute Fetch request
         do {
             fetchedResults = try  self.mainContextInstance.fetch(fetchRequest) as! [Receipt]
         } catch let fetchError as NSError {
@@ -104,11 +96,11 @@ class ReceiptAPI {
 
     // MARK: Delete
 
-    func deleteReceipt(_ receiptItem: Receipt) {
-        self.mainContextInstance.delete(receiptItem)
-        self.persistenceManager.mergeWithMainContext()
-        self.postUpdateNotification()
-    }
+//    func deleteReceipt(_ receiptItem: Receipt) {
+//        self.mainContextInstance.delete(receiptItem)
+//        self.persistenceManager.mergeWithMainContext()
+//        self.postUpdateNotification()
+//    }
 
     fileprivate func postUpdateNotification() {
         NotificationCenter.default.post(name: Notification.Name(rawValue: "updateReceiptTableData"), object: nil)

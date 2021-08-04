@@ -51,11 +51,8 @@ class GroupAPI {
         }
    
         self.persistenceManager.saveWorkerContext(minionManagedObjectContextWorker)
-
-  
         self.persistenceManager.mergeWithMainContext()
-
-        self.postUpdateNotification()
+        self.postUpdateNotification()//update table
     }
 
     // MARK: Read
@@ -84,14 +81,6 @@ class GroupAPI {
         // Create request on Event entity
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: GroupTypes.Group.rawValue)
 
-        //Create sort descriptor to sort retrieved Events by Date, ascending
-//        if sortedByDate {
-//            let sortDescriptor = NSSortDescriptor(key: dateNamespace,
-//                ascending: sortAscending)
-//            let sortDescriptors = [sortDescriptor]
-//            fetchRequest.sortDescriptors = sortDescriptors
-//        }
-
         //Execute Fetch request
         do {
             fetchedResults = try  self.mainContextInstance.fetch(fetchRequest) as! [Group]
@@ -101,27 +90,6 @@ class GroupAPI {
         }
         return fetchedResults
     }
-    
-    // MARK: Update
-//    func updateEvent(_ eventItemToUpdate: Event, newEventItemDetails: Dictionary<String, AnyObject>) {
-//
-//        let minionManagedObjectContextWorker: NSManagedObjectContext =
-//        NSManagedObjectContext.init(concurrencyType: NSManagedObjectContextConcurrencyType.privateQueueConcurrencyType)
-//        minionManagedObjectContextWorker.parent = self.mainContextInstance
-//
-//        //Assign field values
-//        for (key, value) in newEventItemDetails {
-//            for attribute in EventAttributes.getAll {
-//                if (key == attribute.rawValue) {
-//                    eventItemToUpdate.setValue(value, forKey: key)
-//                }
-//            }
-//        }
-//        //Persist new Event to datastore (via Managed Object Context Layer).
-//        self.persistenceManager.saveWorkerContext(minionManagedObjectContextWorker)
-//        self.persistenceManager.mergeWithMainContext()
-//        self.postUpdateNotification()
-//    }
 
     // MARK: Delete
 
@@ -130,9 +98,47 @@ class GroupAPI {
         self.persistenceManager.mergeWithMainContext()
         self.postUpdateNotification()
     }
-
+//To refeash Table
     fileprivate func postUpdateNotification() {
         NotificationCenter.default.post(name: Notification.Name(rawValue: "updateGroupTableData"), object: nil)
     }
+    
+    // Create Default Group
+    func saveGroup(_ groupTitle: String?) {
+        
+        //Minion Context worker with Private Concurrency type.
+        let minionManagedObjectContextWorker: NSManagedObjectContext =
+            NSManagedObjectContext.init(concurrencyType: NSManagedObjectContextConcurrencyType.privateQueueConcurrencyType)
+        minionManagedObjectContextWorker.parent = self.mainContextInstance
+        
+        //Create new Object of Event entity
+        let groupItem = NSEntityDescription.insertNewObject(forEntityName: GroupTypes.Group.rawValue,
+                                                            into: minionManagedObjectContextWorker) as! Group
+        
+        groupItem.groupId = "1"
+        groupItem.groupName = groupTitle!
+        groupItem.groupDescription = "Default group"
+        self.persistenceManager.saveWorkerContext(minionManagedObjectContextWorker)
+        self.persistenceManager.mergeWithMainContext()
+        self.postUpdateNotification()
+    }
+    
+    func getGroupName(_ groupName: NSString) -> Array<Group> {
+        var fetchedResults: Array<Group> = Array<Group>()
 
+    
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: GroupTypes.Group.rawValue)
+        let findByGroupNamePredicate =
+        NSPredicate(format: "groupName = %@", groupName)
+        fetchRequest.predicate = findByGroupNamePredicate
+        //Execute Fetch request
+        do {
+            fetchedResults = try self.mainContextInstance.fetch(fetchRequest) as! [Group]
+        } catch let fetchError as NSError {
+            print("retrieveById error: \(fetchError.localizedDescription)")
+            fetchedResults = Array<Group>()
+        }
+
+        return fetchedResults
+    }
 }
