@@ -10,10 +10,12 @@ class ReceiptTableViewController: UIViewController, UITableViewDataSource, UITab
     var selectedGroupItem: Group!
     var groupAPI: GroupAPI!
     
+    @IBOutlet var totalLbl: UILabel!
+    
     @IBOutlet var receiptsTableView: UITableView!
     let receiptTableCellIdentifier = "receiptItemCell"
-    
     let addReceiptItemSegueIdentifier = "addReceiptItemSegue"
+    var receiptTotal : NSInteger = 0
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,6 +40,7 @@ class ReceiptTableViewController: UIViewController, UITableViewDataSource, UITab
         self.receiptAPI = ReceiptAPI.sharedInstance
         receiptList.removeAll()
         self.receiptList = self.receiptAPI.getReceiptByIdGroupName(selectedGroupItem.groupName as NSString)
+        receiptTotal = 0;
     }
     
     @objc func updateReceiptTableData() {
@@ -45,6 +48,7 @@ class ReceiptTableViewController: UIViewController, UITableViewDataSource, UITab
     }
     
     func refreshTableData() {
+        receiptTotal = 0;
         self.receiptList.removeAll(keepingCapacity: false)
         self.receiptList = self.receiptAPI.getReceiptByIdGroupName(selectedGroupItem.groupName as NSString)
         self.receiptsTableView.reloadData()
@@ -60,10 +64,24 @@ class ReceiptTableViewController: UIViewController, UITableViewDataSource, UITab
          let receiptItem: Receipt!
         receiptItem = receiptList[(indexPath as NSIndexPath).row]
         receiptCell.receiptName.text = receiptItem.receiptName
+        if receiptItem.receiptValue != "" {
+            receiptTotal = receiptTotal + Int(receiptItem.receiptValue)!
+        }
+        totalLbl.text = NSString(format: "Total = %d", receiptTotal) as String
         return receiptCell
     }
     
-    
+    // MARK: - Table edit mode
+
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+
+     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            receiptAPI.deleteReceipt(receiptList[(indexPath as NSIndexPath).row])
+        }
+    }
     
     // MARK: - Navigation
 

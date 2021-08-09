@@ -11,6 +11,7 @@ class GroupTableViewController: UIViewController, UITableViewDataSource, UITable
     @IBOutlet var firstLastLbl: UILabel!
     @IBOutlet var bankAccountLbl: UILabel!
     
+    
     var groupList: Array<Group> = []
     var selectedGroupItem: Group!
     var groupAPI: GroupAPI!
@@ -94,19 +95,6 @@ class GroupTableViewController: UIViewController, UITableViewDataSource, UITable
         }
     }
 
-    // MARK: - Table edit mode
-
-//    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-//        return true
-//    }
-//
-//     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-//        if editingStyle == .delete {
-//            //Delete item from datastore
-//            groupAPI.deleteGroup(groupList[(indexPath as NSIndexPath).row])
-//            self.title = String(format: "Upcoming events (%i)", groupList.count)
-//        }
-//    }
 
     // MARK: -
     

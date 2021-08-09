@@ -96,11 +96,11 @@ class ReceiptAPI {
 
     // MARK: Delete
 
-//    func deleteReceipt(_ receiptItem: Receipt) {
-//        self.mainContextInstance.delete(receiptItem)
-//        self.persistenceManager.mergeWithMainContext()
-//        self.postUpdateNotification()
-//    }
+    func deleteReceipt(_ receiptItem: Receipt) {
+        self.mainContextInstance.delete(receiptItem)
+        self.persistenceManager.mergeWithMainContext()
+        self.postUpdateNotification()
+    }
 
     fileprivate func postUpdateNotification() {
         NotificationCenter.default.post(name: Notification.Name(rawValue: "updateReceiptTableData"), object: nil)
