@@ -5,7 +5,10 @@ class AllReceiptViewController: UIViewController, UITableViewDataSource, UITable
     
     @IBOutlet var allReceiptsTableView: UITableView!
     let showProfileGroupSegueIdentifier = "showProfileGroupItemSegue"
+    let allReceiptItemSegueSegueIdentifier =  "allReceiptItemSegue"
     let defaultGroupName = "Grocery"
+
+    
     
     var selectedGroupItem: Group!
     var groupAPI: GroupAPI!
@@ -35,6 +38,7 @@ class AllReceiptViewController: UIViewController, UITableViewDataSource, UITable
         self.receiptAPI = ReceiptAPI.sharedInstance
         receiptList.removeAll()
         self.receiptList = self.receiptAPI.getAllReceipt()
+        
     }
     
     @objc func updateReceiptTableData() {
@@ -66,6 +70,17 @@ class AllReceiptViewController: UIViewController, UITableViewDataSource, UITable
         cell?.textLabel?.text = receiptItem.receiptName
               return cell!
     }
+    
+     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "ReceiptItemViewControllerIdentifier") as? ReceiptItemViewController
+        let selectedReceiptItemTemp: Receipt!
+        selectedReceiptItemTemp = receiptList[(allReceiptsTableView.indexPathForSelectedRow! as NSIndexPath).row] as Receipt
+        vc!.selectedReceiptItem = selectedReceiptItemTemp
+        vc!.fromAll = true
+        self.navigationController?.pushViewController(vc!, animated: true)
+    }
+    
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) { // Navigate
 
         let destination = segue.destination as? GroupTableViewController

@@ -7,6 +7,7 @@ UINavigationControllerDelegate {
     fileprivate var receiptAPI: ReceiptAPI!
     var selectedReceiptItem: Receipt!
     var selectedGroupItem: Group!
+    var fromAll = false
     
     @IBOutlet weak var receiptNameTxt: UITextField! { didSet { receiptNameTxt.delegate = self } }
     @IBOutlet weak var receiptDescriptionTxt: UITextView! { didSet { receiptDescriptionTxt.delegate = self } }
@@ -14,6 +15,7 @@ UINavigationControllerDelegate {
     @IBOutlet weak var receiptValueTxt: UITextField! { didSet { receiptValueTxt.delegate = self } }
     @IBOutlet weak var receiptSnapshotImg: UIImageView!
     @IBOutlet weak var receiptSnapshotBtn: UIButton!
+    @IBOutlet weak var saveBtn: UIButton!
     
     //DB :
     fileprivate let groupId  = ReceiptAttributes.groupId.rawValue
@@ -36,6 +38,14 @@ UINavigationControllerDelegate {
         receiptDescriptionTxt.layer.borderWidth = 1;
         receiptDescriptionTxt.layer.borderColor = UIColor(red: 204/255.0, green: 204/255.0, blue: 204/255.0, alpha: 1.0).cgColor
         receiptDescriptionTxt.layer.cornerRadius = 5;
+        if self.fromAll == true {
+            saveBtn.isHidden = true
+            if receiptSnapshotImg.image != nil {
+                receiptSnapshotBtn.isHidden = true
+            } else {
+                receiptSnapshotBtn.isHidden = false
+            }
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -44,8 +54,20 @@ UINavigationControllerDelegate {
 
     fileprivate func setup() {
         self.receiptAPI = ReceiptAPI.sharedInstance
+        if(self.selectedReceiptItem != nil) {
+            setFieldValues()
+        }
     }
-    
+ 
+    func setFieldValues() {
+        receiptNameTxt.text = selectedReceiptItem.receiptName
+        receiptDescriptionTxt.text = selectedReceiptItem.receiptDescription
+        receiptDateTxt.text = selectedReceiptItem.receiptDate
+        receiptValueTxt.text = selectedReceiptItem.receiptValue
+        receiptSnapshotImg.image = UIImage(data: selectedReceiptItem.receiptSnapshot)
+
+    }
+
     // MARK Actions :
     @IBAction func receiptSaveButtonTapped(_ sender: UIBarButtonItem) {
         if receiptNameTxt.text! != "" {

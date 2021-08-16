@@ -20,6 +20,9 @@ class GroupTableViewController: UIViewController, UITableViewDataSource, UITable
     var selectedProfileItem: Profile!
     var profileList: Array<Profile> = []
     
+    var receiptAPI: ReceiptAPI!
+    var receiptList: Array<Receipt> = []
+    
     let groupTableCellIdentifier = "groupItemCell"
     let editProfileSegueIdentifier = "editProfileSegue"
     let editGroupItemSegueIdentifier = "editGroupItemSegue"
@@ -39,7 +42,7 @@ class GroupTableViewController: UIViewController, UITableViewDataSource, UITable
         let notificationCenterProfile = NotificationCenter.default
         notificationCenterProfile.addObserver(self, selector: #selector(self.updateProfileTableData), name: .updateProfileTableData, object: nil)
         
-        
+        self.receiptAPI = ReceiptAPI.sharedInstance
         self.profileAPI = ProfileAPI.sharedInstance
         self.profileList = self.profileAPI.getAllProfile()
         let profileItem: Profile!
@@ -75,6 +78,22 @@ class GroupTableViewController: UIViewController, UITableViewDataSource, UITable
         groupCell.groupName.text = groupItem.groupName
         return groupCell
     }
+    // MARK: - Table edit mode
+
+        func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+            return true
+        }
+
+         func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+            if editingStyle == .delete {
+                
+                var singleItem : NSString = ""
+                singleItem = groupList[(indexPath as NSIndexPath).row].groupName as NSString
+                let list = receiptAPI.getReceiptByIdGroupName(singleItem)
+                receiptAPI.deleteReceiptArray(list);
+                groupAPI.deleteGroup(groupList[(indexPath as NSIndexPath).row])
+            }
+        }
 
     // MARK: - Navigation
 

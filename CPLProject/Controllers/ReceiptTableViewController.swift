@@ -91,6 +91,7 @@ class ReceiptTableViewController: UIViewController, UITableViewDataSource, UITab
         if segue.identifier == addReceiptItemSegueIdentifier {
             destination!.title = "Add Receipt"
             destination!.selectedGroupItem = selectedGroupItem
+            destination!.fromAll = false
         }
     }
 }

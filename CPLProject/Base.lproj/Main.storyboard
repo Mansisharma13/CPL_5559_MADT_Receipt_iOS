@@ -514,7 +514,7 @@
         <!--Add Receipt Details-->
         <scene sceneID="NHO-SL-X2n">
             <objects>
-                <viewController id="NzF-Fh-9RG" customClass="ReceiptItemViewController" customModule="CPLProject" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ReceiptItemViewControllerIdentifier" id="NzF-Fh-9RG" customClass="ReceiptItemViewController" customModule="CPLProject" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="1V1-3Y-5tB"/>
                         <viewControllerLayoutGuide type="bottom" id="A1a-Xo-PHy"/>
@@ -608,7 +608,7 @@
                                             <constraint firstAttribute="height" constant="34" id="pSb-ND-gTP"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                     </textField>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="8HR-1E-fJK">
                                         <rect key="frame" x="155" y="242" width="190" height="70"/>
@@ -705,11 +705,12 @@
                         <outlet property="receiptSnapshotBtn" destination="ymo-y1-SfQ" id="JZH-Ji-M6y"/>
                         <outlet property="receiptSnapshotImg" destination="8HR-1E-fJK" id="0M6-60-y0q"/>
                         <outlet property="receiptValueTxt" destination="oRZ-n3-BXi" id="7yc-Pa-9WZ"/>
+                        <outlet property="saveBtn" destination="m1d-Vn-EWx" id="SbO-yT-nak"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eJg-uN-gAa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4585" y="144"/>
+            <point key="canvasLocation" x="2161" y="442"/>
         </scene>
     </scenes>
     <resources>

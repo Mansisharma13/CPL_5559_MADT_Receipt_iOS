@@ -8,6 +8,7 @@ UINavigationControllerDelegate, UIActionSheetDelegate, UITextFieldDelegate {
     fileprivate var profileAPI: ProfileAPI!
     var selectedProfileItem: Profile!
     var profileList: Array<Profile> = []
+    var cameraOpened : Bool = false
     
     @IBOutlet weak var profileImg: UIImageView!
     @IBOutlet weak var firstTxt: UITextField! { didSet { firstTxt.delegate = self } }
@@ -23,10 +24,13 @@ UINavigationControllerDelegate, UIActionSheetDelegate, UITextFieldDelegate {
         super.viewDidLoad()
         profileImg.layer.cornerRadius = 60.0
         profileImg.clipsToBounds = true
+        self.cameraOpened = false
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        self.setup()
+        if self.cameraOpened == false {
+            self.setup()
+        }
     }
     
     fileprivate func setup() {
@@ -57,6 +61,7 @@ UINavigationControllerDelegate, UIActionSheetDelegate, UITextFieldDelegate {
 
         // Create and add the Cancel action
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { action -> Void in
+            self.cameraOpened =  false
         }
         actionSheetController.addAction(cancelAction)
 
@@ -67,18 +72,20 @@ UINavigationControllerDelegate, UIActionSheetDelegate, UITextFieldDelegate {
                 imagePicker.delegate = self
                 imagePicker.sourceType = .photoLibrary;
                 imagePicker.allowsEditing = true
+                self.cameraOpened =  false
                 self.present(imagePicker, animated: true, completion: nil)
             }
         }
         actionSheetController.addAction(takePictureAction)
 
         // Create and add a second option action
-        let choosePictureAction = UIAlertAction(title: "Camera", style: .default) { action -> Void in
+        let choosePictureAction = UIAlertAction(title: "Camera", style: .default) { [self] action -> Void in
             if UIImagePickerController.isSourceTypeAvailable(.camera) {
                 let imagePicker = UIImagePickerController()
                 imagePicker.delegate = self
                 imagePicker.sourceType = .camera;
-                imagePicker.allowsEditing = false
+                imagePicker.allowsEditing = true
+                self.cameraOpened =  true
                 self.present(imagePicker, animated: true, completion: nil)
             }
         }

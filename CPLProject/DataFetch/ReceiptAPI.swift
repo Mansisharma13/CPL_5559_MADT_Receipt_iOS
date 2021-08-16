@@ -101,6 +101,17 @@ class ReceiptAPI {
         self.persistenceManager.mergeWithMainContext()
         self.postUpdateNotification()
     }
+    
+    func deleteReceiptArray(_ receiptItemArray: Array<Receipt>) {
+        
+            for item in receiptItemArray {
+                   self.mainContextInstance.delete(item)
+               }
+            
+           // self.mainContextInstance.delete(receiptItem)
+            self.persistenceManager.mergeWithMainContext()
+            self.postUpdateNotification()
+    }
 
     fileprivate func postUpdateNotification() {
         NotificationCenter.default.post(name: Notification.Name(rawValue: "updateReceiptTableData"), object: nil)
