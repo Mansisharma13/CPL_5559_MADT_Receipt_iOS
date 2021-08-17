@@ -65,7 +65,7 @@ class ReceiptTableViewController: UIViewController, UITableViewDataSource, UITab
         receiptItem = receiptList[(indexPath as NSIndexPath).row]
         receiptCell.receiptName.text = receiptItem.receiptName
         if receiptItem.receiptValue != "" {
-            receiptTotal = receiptTotal + Int(receiptItem.receiptValue)!
+            receiptTotal = receiptTotal + Int(Float(receiptItem.receiptValue)!)
         }
         totalLbl.text = NSString(format: "Total = %d", receiptTotal) as String
         return receiptCell
